@@ -6,12 +6,13 @@ class MiscController < ApplicationController
     render({ :template => "misc_templates/directors"})
   end
   def youngest_director
-    @youngest = Director.where.not({ :dob => nil }).order({ :dob => :asc }).at(0)
+    @youngest = Director.where.not({ :dob => nil }).order({ :dob => :desc }).at(0)
    
     render({ :template => "misc_templates/youngest_director"})
   end
   def eldest_director
-    @eldest = Director.where.not({ :dob => nil }).order({ :dob => :desc }).at(0)
+    @eldest = Director.where.not({ :dob => nil }).order({ :dob => :asc }).at(0)
+    
     render({ :template => "misc_templates/eldest_director"})
   end
   def movies

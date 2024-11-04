@@ -1,0 +1,22 @@
+<html>
+<h1>list of all directors</h1>
+Directors.each do |@director|
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Dob</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td><%=@director.id%></td>
+      <td><%=@director.image%></td>
+      <td><%=@director.name%></td>
+      <td><%=@director.dob%></td>
+      <td>see details</td>
+    </tr>
+ 
+  </table> 
+end
+</html>
