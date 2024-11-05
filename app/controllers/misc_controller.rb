@@ -24,4 +24,16 @@ class MiscController < ApplicationController
     @actors = Actor.all
     render({ :template => "misc_templates/actors"})
   end
+  
+  def details
+    @id = params.fetch("id", nil) # Fetch the director's ID from parameters
+    puts "Director ID: #{@id}" # Debugging line
+  
+    if @id.nil?
+      return render plain: "No director ID provided", status: :unprocessable_entity
+    end
+    @director = Director.find(@id)
+    @movies = Movie.where(director_id => @director.id)
+    render({ :template => "misc_templates/director_details.html.erb"})
+  end 
 end

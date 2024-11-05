@@ -1,0 +1,123 @@
+ <body>
+    <nav>
+      <a href="/">
+        Home
+      </a>
+    </nav>
+    
+<h1>
+  Actor <%=@actor.id%> details
+</h1>
+
+<a href="/actors" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+
+&nbsp;|&nbsp;
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%=@actor.name%>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%=@actor.dob%>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%=@actor.bio%>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src=<%= @actor.image %>">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%=@actor.created_at%>
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%=@actor.updated_at%>
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Actor
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <tr>
+    <td>
+      1
+    </td>
+
+    <td>
+      <img src="https://image.tmdb.org/t/p/w500/5KCVkau1HEl7ZzfPsKAPM0sMiKc.jpg" style="width:250px;">
+    </td>
+
+    <td>
+      <%= Actor.where({ :id => @id}).at(0).title%>
+    </td>
+
+    <td>
+      1994
+    </td>
+
+    <td>
+      <%=@actor.name%>
+    </td>
+
+    <td>
+      <a href="/actor/1">
+        Show details
+      </a>
+    </td>
+  </tr>
+</table>
+
+  </body>
