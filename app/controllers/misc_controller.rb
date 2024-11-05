@@ -3,6 +3,7 @@ class MiscController < ApplicationController
     render({ :template => "misc_templates/home"})
   end
   def directors
+    @directors = Director.all
     render({ :template => "misc_templates/directors"})
   end
   def youngest_director
@@ -16,9 +17,11 @@ class MiscController < ApplicationController
     render({ :template => "misc_templates/eldest_director"})
   end
   def movies
+    @movies = Movie.all
     render({ :template => "misc_templates/movies"})
   end
   def actors
+    @actors = Actor.all
     render({ :template => "misc_templates/actors"})
   end
 end
