@@ -15,6 +15,7 @@
 
 &nbsp;|&nbsp;
 
+
 <hr>
 
 <dl>
@@ -64,7 +65,7 @@
 <hr>
 
 <h2>Filmography</h2>
-
+<% @movies.each do |movie| %>
 <table border="1">
   <tr>
     <th>
@@ -97,11 +98,11 @@
     </td>
 
     <td>
-      <img src ="<%= Movie.where({ :director_id => @director.id}).at(0).image%>">
+      <img src ="<%= movie.image%>">
     </td>
 
     <td>
-      <%= Movie.where({ :director_id => @director.id}).at(0).title%>
+      <%= movie.title%>
     </td>
 
     <td>
@@ -113,11 +114,12 @@
     </td>
 
     <td>
-      <a href="/movies/<%=Movie.where({ :director_id => @director.id}).at(0).id%>">
+      <a href="/movies/<%=movie.id%>">
         Show details
       </a>
+
     </td>
   </tr>
 </table>
-
+<%end%>
   </body>
