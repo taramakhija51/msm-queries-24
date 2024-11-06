@@ -35,7 +35,9 @@ class MiscController < ApplicationController
   def movie_details
     @id = params.fetch("id")
     @movie = Movie.all.where({ :id => @id}).at(0)
-    @director = Director.all.where({ :id => @id}).at(0).name
+    @director = Director.where({ :id => @movie}).at(0).name
+    # @director = Movie.all.where({ :director_id => @id}).at(0).id
+
   render({ :template => "misc_templates/movie_details"})
   end 
 
