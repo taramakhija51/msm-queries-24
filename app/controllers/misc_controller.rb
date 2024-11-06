@@ -29,15 +29,20 @@ class MiscController < ApplicationController
       @id = params.fetch("id")
       @director = Director.all.where({ :id => @id}).at(0)
       @movies = Movie.where({ :director_id => @director.id})
-      @movie_id = Movie.where({ :director_id => @director.id}).at(0).id
-      @movie_title = Movie.where({ :director_id => @director.id}).at(0).title
-      @movie_image = Movie.where({ :director_id => @director.id}).at(0).image
-    render({ :template => "misc_templates/director_details"})
+  render({ :template => "misc_templates/director_details"})
   end 
 
   def movie_details
     @id = params.fetch("id")
-  
+    @movie = Movie.all.where({ :id => @id}).at(0)
+    @director = Director.all.where({ :id => @id}).at(0).name
   render({ :template => "misc_templates/movie_details"})
-end 
+  end 
+
+  def actor_details
+    @id = params.fetch("id")
+    @movie = Movie.all.where({ :id => @id}).at(0)
+    @actor = Actor.all.where({ :id => @id}).at(0).name
+  render({ :template => "misc_templates/actor_details"})
+  end 
 end
