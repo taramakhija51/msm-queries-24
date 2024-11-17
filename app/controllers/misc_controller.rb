@@ -35,8 +35,8 @@ class MiscController < ApplicationController
   def movie_details
     @id = params.fetch("id")
     @movie = Movie.all.where({ :id => @id}).at(0)
-    @director = Director.where({ :id => @movie}).at(0).name
-    # @director = Movie.all.where({ :director_id => @id}).at(0).id
+    @director = Director.where({ :id => @movie.director_id}).at(0).name
+    
 
   render({ :template => "misc_templates/movie_details"})
   end 
@@ -48,3 +48,13 @@ class MiscController < ApplicationController
   render({ :template => "misc_templates/actor_details"})
   end 
 end
+
+# def director
+# x = self.director_id
+# matching_records = Director.where({ :id => x})
+# y = matching_records.first
+# return y
+# end
+
+# =
+# belongs_to(:director, class_name: "Director", foreign_key: "director_id")
